@@ -53,9 +53,10 @@ public class ONSolutionTest {
             }
         }
 
-        System.out.println(hash.SizeOfHashTable());
-        System.out.println(hash.NumberOfRehashes());
-        System.out.println(hash.NumberOfRehashesIndex());
+        System.out.println("Finished inserting and verifying " + count + " random words.");
+        System.out.println("Hash Table Size: " + hash.SizeOfHashTable());
+        System.out.println("Number of Rehashes: " + hash.NumberOfRehashes());
+        System.out.println("Number of Rehashes in index:" +hash.NumberOfRehashesIndex());
     }
     @Test
     public void testRandomInsertions() {
@@ -77,7 +78,7 @@ public class ONSolutionTest {
         System.out.println("Finished inserting and verifying " + count + " random words.");
         System.out.println("Hash Table Size: " + hash.SizeOfHashTable());
         System.out.println("Number of Rehashes: " + hash.NumberOfRehashes());
-        System.out.println(hash.NumberOfRehashesIndex());
+        System.out.println("Number of Rehashes in index:" +hash.NumberOfRehashesIndex());
     }
     @Test
     public void testWordSize10() {
@@ -97,7 +98,7 @@ public class ONSolutionTest {
         System.out.println("Finished inserting and verifying " + count + " random words of size 10.");
         System.out.println("Hash Table Size: " + hash.SizeOfHashTable());
         System.out.println("Number of Rehashes: " + hash.NumberOfRehashes());
-        System.out.println(hash.NumberOfRehashesIndex());
+        System.out.println("Number of Rehashes in index:" +hash.NumberOfRehashesIndex());
     }
 
     @Test
@@ -120,7 +121,7 @@ public class ONSolutionTest {
         System.out.println("Finished inserting and verifying " + count + " random words of size 15.");
         System.out.println("Hash Table Size: " + hash.SizeOfHashTable());
         System.out.println("Number of Rehashes: " + hash.NumberOfRehashes());
-        System.out.println(hash.NumberOfRehashesIndex());
+        System.out.println("Number of Rehashes in index:" +hash.NumberOfRehashesIndex());
     }
 
     @Test
@@ -132,7 +133,6 @@ public class ONSolutionTest {
 
         for (int i = 0; i < count; i++) {
             int wordSize = random.nextInt(20)+6;
-            System.out.println(i );
             String word = generateRandomWord(random, wordSize);
             while (!inserted.add(word)) {
                 word = generateRandomWord(random, wordSize);
@@ -147,7 +147,7 @@ public class ONSolutionTest {
         System.out.println("Finished inserting and verifying " + count + " random words of random sizes (1 to 20).");
         System.out.println("Hash Table Size: " + hash.SizeOfHashTable());
         System.out.println("Number of Rehashes: " + hash.NumberOfRehashes());
-        System.out.println(hash.NumberOfRehashesIndex());
+        System.out.println("Number of Rehashes in index:" +hash.NumberOfRehashesIndex());
     }
 
 

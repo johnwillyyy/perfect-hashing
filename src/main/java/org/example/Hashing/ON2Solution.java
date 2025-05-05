@@ -22,21 +22,8 @@ public class ON2Solution implements PrefectHashing {
 
     @Override
     public boolean insert(String s) {
-//        System.out.println(table.size());
-//        System.out.println(table.toString());
         if (search(s)) return false;
-        ArrayList<String>a = new ArrayList<>();
-        ArrayList<Integer>b = new ArrayList<>();
-        for (int i = 0 ; i< table.size(); i++){
-            if(table.get(i)!=null) a.add(table.get(i));
-        }
-        for (int i = 0 ; i< a.size(); i++){
-            b.add(hashingFunction.hash(a.get(i),table.size(),coefficients));
-        }
-        System.out.println(a.toString());
-        System.out.println(b.toString());
         int index=hashingFunction.hash(s, table.size(), coefficients);
-
         if(table.get(index)==null) {
             table.set(index, s);
             size++ ;
@@ -60,11 +47,13 @@ public class ON2Solution implements PrefectHashing {
 
     @Override
     public boolean search(String s) {
-        if (size==0) return false;
         int index=hashingFunction.hash(s, table.size(), coefficients);
-        System.out.println(s);
-        System.out.println(index);
-        return table.get(index)!=null && table.get(index).equals(s);
+        if(table.get(index)!=null && table.get(index).equals(s)){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     @Override
@@ -79,9 +68,13 @@ public class ON2Solution implements PrefectHashing {
 
     private boolean rehash(boolean resize , String s) {
         boolean f =false;
+        ArrayList<Long> newCoefficients = new ArrayList<>();
+        ArrayList<String> newTable = new ArrayList<>();
         while (!f) {
+            rehashes++;
             int newSize = table.size();
             if(resize) newSize = limit*limit ;
+
             ArrayList<String> elements = new ArrayList<>() ;
             for (int i=0;i<table.size();i++) {
                if(table.get(i)!=null) {
@@ -89,19 +82,24 @@ public class ON2Solution implements PrefectHashing {
                }
             }
             if(s != null)elements.add(s);
-            table=new ArrayList<>(Collections.nCopies(newSize, null));
-            coefficients=hashingFunction.CreateRandomVariables();
+
+            newCoefficients = hashingFunction.CreateRandomVariables();
+            newTable = new ArrayList<>(Collections.nCopies(newSize, null));
+
             f = true;
-            for (String word:elements) {
-                int index=hashingFunction.hash(word, table.size(), coefficients);
-                if (table.get(index) != null && !table.get(index).equals(word)){
-                    rehashes++;
+            for (String word : elements) {
+                int index = hashingFunction.hash(word, newSize, newCoefficients);
+                if (newTable.get(index) != null) {
+                    // Collision detected, need to retry with new coefficients
                     f = false;
                     break;
                 }
-                table.set(index, word);
+                newTable.set(index, word);
             }
         }
+        table = newTable;
+        coefficients = newCoefficients;
+        size = s != null ? size + 1 : size;
         return true;
     }
 }

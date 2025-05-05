@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.Hashing.ON2Solution;
 import org.example.Hashing.ONSolution;
 
 import java.util.Scanner;
@@ -7,7 +8,7 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        ONSolution hash = new ONSolution();
+        ON2Solution hash = new ON2Solution();
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -27,7 +28,6 @@ public class Main {
         }
 
         System.out.println("Number of table rehashes: " + hash.NumberOfRehashes());
-        System.out.println("Number of bucket rehashes: " + hash.NumberOfRehashesIndex());
         System.out.println("Final hash table size: " + hash.SizeOfHashTable());
     }
 }

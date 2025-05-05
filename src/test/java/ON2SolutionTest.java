@@ -31,19 +31,16 @@ public class ON2SolutionTest {
     @Test
     public void testLargeInsertions() {
         ON2Solution hash = new ON2Solution();
-        int count =1000;
+        int count =10000;
         for (int i = 0; i < count; i++) {
-            System.out.println(i);
             assertTrue(hash.insert("kerokero" + i));
         }
 
         for (int i = 0; i < count; i++) {
-            System.out.println(i);
             assertTrue(hash.search("kerokero" + i));
         }
 
         for (int i = 0; i < count; i += 2) {
-            System.out.println(i);
             assertTrue(hash.delete("kerokero" + i));
         }
 
@@ -62,7 +59,7 @@ public class ON2SolutionTest {
     @Test
     public void testRandomInsertions() {
         ON2Solution hash = new ON2Solution();
-        int count = 100;
+        int count = 10000;
         Random random = new Random();
         HashSet<String> inserted = new HashSet<>();
 
@@ -83,7 +80,7 @@ public class ON2SolutionTest {
     @Test
     public void testWordSize10() {
         ON2Solution hash = new ON2Solution();
-        int count = 100;
+        int count = 10000;
         List<String> words = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
@@ -104,7 +101,7 @@ public class ON2SolutionTest {
     @Test
     public void testWordSize15() {
         ON2Solution hash = new ON2Solution();
-        int count = 100;
+        int count = 10000;
         List<String> words = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
@@ -127,13 +124,12 @@ public class ON2SolutionTest {
     @Test
     public void testWordSizeRandom1to20() {
         ON2Solution hash = new ON2Solution();
-        int count = 100;
+        int count = 10000;
         Random random = new Random();
         HashSet<String> inserted = new HashSet<>();
 
         for (int i = 0; i < count; i++) {
             int wordSize = random.nextInt(20)+6;
-            System.out.println(i );
             String word = generateRandomWord(random, wordSize);
             while (!inserted.add(word)) {
                 word = generateRandomWord(random, wordSize);

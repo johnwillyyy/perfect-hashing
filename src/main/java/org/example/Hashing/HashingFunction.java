@@ -43,6 +43,7 @@ public class HashingFunction {
             list.add(val);
         }
         int randomIndex = rand.nextInt(primes.size());
+        if(randomIndex<=20) randomIndex+=20;
         long primeVal = primes.get(randomIndex);
         list.add(primeVal);
         return list;
