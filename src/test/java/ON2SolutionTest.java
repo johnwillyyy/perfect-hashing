@@ -1,5 +1,6 @@
 
 import org.example.Hashing.HashingFunction;
+import org.example.Hashing.ON2Solution;
 import org.example.Hashing.ONSolution;
 import org.junit.jupiter.api.Test;
 
@@ -11,11 +12,11 @@ import java.util.Random;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class ONSolutionTest {
+public class ON2SolutionTest {
 
     @Test
     public void testBasicOperations() {
-        ONSolution hash = new ONSolution();
+        ON2Solution hash = new ON2Solution();
 
         assertTrue(hash.insert("apple"));
         assertTrue(hash.insert("banana"));
@@ -25,42 +26,43 @@ public class ONSolutionTest {
         assertFalse(hash.delete("apple"));
         System.out.println(hash.SizeOfHashTable());
         System.out.println(hash.NumberOfRehashes());
-        System.out.println(hash.NumberOfRehashesIndex());
     }
 
     @Test
     public void testLargeInsertions() {
-        HashingFunction hash1 = new HashingFunction();
-        ONSolution hash = new ONSolution();
-        int count =1000000;
+        ON2Solution hash = new ON2Solution();
+        int count =1000;
         for (int i = 0; i < count; i++) {
-            assertTrue(hash.insert("word" + i));
+            System.out.println(i);
+            assertTrue(hash.insert("kerokero" + i));
         }
 
         for (int i = 0; i < count; i++) {
-            assertTrue(hash.search("word" + i));
+            System.out.println(i);
+            assertTrue(hash.search("kerokero" + i));
         }
 
         for (int i = 0; i < count; i += 2) {
-            assertTrue(hash.delete("word" + i));
+            System.out.println(i);
+            assertTrue(hash.delete("kerokero" + i));
         }
 
         for (int i = 0; i < count; i++) {
+            System.out.println(i);
             if (i % 2 == 0) {
-                assertFalse(hash.search("word" + i));
+                assertFalse(hash.search("kerokero" + i));
             } else {
-                assertTrue(hash.search("word" + i));
+                assertTrue(hash.search("kerokero" + i));
             }
         }
 
         System.out.println(hash.SizeOfHashTable());
         System.out.println(hash.NumberOfRehashes());
-        System.out.println(hash.NumberOfRehashesIndex());
     }
     @Test
     public void testRandomInsertions() {
-        ONSolution hash = new ONSolution();
-        int count = 1000000;
+        ON2Solution hash = new ON2Solution();
+        int count = 100;
         Random random = new Random();
         HashSet<String> inserted = new HashSet<>();
 
@@ -77,12 +79,11 @@ public class ONSolutionTest {
         System.out.println("Finished inserting and verifying " + count + " random words.");
         System.out.println("Hash Table Size: " + hash.SizeOfHashTable());
         System.out.println("Number of Rehashes: " + hash.NumberOfRehashes());
-        System.out.println(hash.NumberOfRehashesIndex());
     }
     @Test
     public void testWordSize10() {
-        ONSolution hash = new ONSolution();
-        int count = 1000000;
+        ON2Solution hash = new ON2Solution();
+        int count = 100;
         List<String> words = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
@@ -97,13 +98,13 @@ public class ONSolutionTest {
         System.out.println("Finished inserting and verifying " + count + " random words of size 10.");
         System.out.println("Hash Table Size: " + hash.SizeOfHashTable());
         System.out.println("Number of Rehashes: " + hash.NumberOfRehashes());
-        System.out.println(hash.NumberOfRehashesIndex());
+
     }
 
     @Test
     public void testWordSize15() {
-        ONSolution hash = new ONSolution();
-        int count = 1000000;
+        ON2Solution hash = new ON2Solution();
+        int count = 100;
         List<String> words = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
@@ -120,13 +121,13 @@ public class ONSolutionTest {
         System.out.println("Finished inserting and verifying " + count + " random words of size 15.");
         System.out.println("Hash Table Size: " + hash.SizeOfHashTable());
         System.out.println("Number of Rehashes: " + hash.NumberOfRehashes());
-        System.out.println(hash.NumberOfRehashesIndex());
+
     }
 
     @Test
     public void testWordSizeRandom1to20() {
-        ONSolution hash = new ONSolution();
-        int count = 1000000;
+        ON2Solution hash = new ON2Solution();
+        int count = 100;
         Random random = new Random();
         HashSet<String> inserted = new HashSet<>();
 
@@ -147,7 +148,6 @@ public class ONSolutionTest {
         System.out.println("Finished inserting and verifying " + count + " random words of random sizes (1 to 20).");
         System.out.println("Hash Table Size: " + hash.SizeOfHashTable());
         System.out.println("Number of Rehashes: " + hash.NumberOfRehashes());
-        System.out.println(hash.NumberOfRehashesIndex());
     }
 
 

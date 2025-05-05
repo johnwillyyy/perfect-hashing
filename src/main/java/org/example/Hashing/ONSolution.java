@@ -77,11 +77,6 @@ public class ONSolution implements PrefectHashing {
         int maxAttempts = 10;
         for (int attempt = 0; attempt < maxAttempts; attempt++) {
             NumberOfReHashesIndex++;
-            ArrayList<Long>A = new ArrayList<>();
-            for (int i = 0; i < elements.size(); i++) {
-                A.add(hashingFunction.djb2Hash(elements.get(i)));
-            }
-            System.out.println(A.toString());
             ArrayList<String> newBucket = new ArrayList<>(Collections.nCopies(size, null));
             ArrayList<Long> randomVars = hashingFunction.CreateRandomVariables();
             boolean success = true;
@@ -177,24 +172,6 @@ public class ONSolution implements PrefectHashing {
 
     @Override
     public boolean insert(String s) {
-//        System.out.println(tableSize);
-//        System.out.println(elementsInTable);
-//        System.out.println(elementsInEachIndex.toString());
-//        System.out.println(virtualelementsInEachIndex.toString());
-//        ArrayList<Integer> r = new ArrayList<>();
-//        for (int i = 0; i < tableSize; i++) {
-//            r.add(table.get(i).size());
-//        }
-//        System.out.println(r.toString());
-//        for (int i = 0; i < tableSize; i++) {
-//            ArrayList<String> bucket = table.get(i);
-//            for (int j = 0; j < bucket.size(); j++) {
-//                String val = bucket.get(j);
-//                if (val != null&&val.equals("word0")) {
-//                    System.out.println("String \"" + val + "\" is at index1 = " + i + ", index2 = " + j);
-//                }
-//            }
-//        }
         if(canInsert(s)){
             elementsInTable++;
             if (elementsInTable == tableSize) {
