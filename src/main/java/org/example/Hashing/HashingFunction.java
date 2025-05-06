@@ -1,7 +1,10 @@
 package org.example.Hashing;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Random;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class HashingFunction {
     ArrayList<Integer>primes;
@@ -62,3 +65,5 @@ public class HashingFunction {
         return primes;
     }
 }
+
+
