@@ -200,13 +200,10 @@ public class ONSolution implements PrefectHashing {
 
     @Override
     public boolean search(String s) {
-//        System.out.println("Searching for " + s);
         int index = hashingFunction.hash(s,tableSize,randomValue);
-//        System.out.println(index);
         int sizeOfIndex = this.table.get(index).size();
         if(sizeOfIndex == 0) return false;
         int index2 = hashingFunction.hash(s,sizeOfIndex,randomValuesForEachIndex.get(index));
-//        System.out.println(index2);
         String value = table.get(index).get(index2);
 
         return value != null && value.equals(s);

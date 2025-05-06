@@ -16,7 +16,7 @@ public class HashingFunction {
         long mod = 1000000009L;
         for (int i = 0; i < str.length(); i++) {
             char c = str.charAt(i);
-            hash = (hash*g+ hash) + c;
+            hash = (hash*g) + c;
             hash %= mod;
         }
         return  (hash % mod);

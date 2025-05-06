@@ -9,8 +9,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-
-
 public class Main {
 
     public static final String RESET = "\u001B[0m";
@@ -38,10 +36,10 @@ public class Main {
 
         if (choice == 1) {
             hash = new ONSolution();
-            System.out.println("✅ O(n^2) solution selected.");
+            System.out.println("✅ O(n) solution selected.");
         } else {
             hash = new ON2Solution();
-            System.out.println("✅ O(n) solution selected.");
+            System.out.println("✅ O(n^2) solution selected.");
         }
 
         while (true) {
